@@ -147,6 +147,7 @@
         font-weight: 500;
     }
   #tasks-grid {
+    width: 60%;
     grid-template-columns: repeat(3, 1fr);
   }
   #outer-div {

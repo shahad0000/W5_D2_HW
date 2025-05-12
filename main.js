@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
     sticker.style.backgroundColor = colors[randomColor];
 
-    deleteBtn.innerText = "Delete task 🗑️";
+    deleteBtn.innerText = "Remove 🗑️";
     deleteBtn.onclick = () => deleteTask(task.id);
 
     taskTitle.innerText = task.title;
