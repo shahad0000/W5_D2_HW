@@ -9,8 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadTasks = () => {
     tasksGrid.innerText = "";
     tasks.map((task) => renderTask(task));
+    talkCount.innerText = ` ${tasks.length} task`;
+
   };
-  talkCount.innerText = ` ${tasks.length} task`;
 
   const renderTask = (task) => {
     let sticker = document.createElement("div");
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let deleteBtn = document.createElement("button");
     let checkBtn = document.createElement("button");
     let stickerBottom = document.createElement("div");
+
     stickerBottom.classList.add("sticker-bottom");
     checkBtn.innerText = "Done";
     checkBtn.style.border = "none";
@@ -35,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sticker.classList.add("sticker", "p-3");
     deleteBtn.classList.add("delete-btn");
     taskTitle.classList.add("task-title");
+
     const randomColor = Math.floor(Math.random() * 8);
     const colors = [
       "#bed9ff",
@@ -49,7 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
     sticker.style.backgroundColor = colors[randomColor];
 
     deleteBtn.innerText = "Remove 🗑️";
-    deleteBtn.onclick = () => deleteTask(task.id);
+    deleteBtn.onclick = () => {
+        let confirmDel = window.confirm("Are you sure you want to delete this task?");      
+            if (confirmDel) deleteTask(task.id);
+    } 
 
     taskTitle.innerText = task.title;
     sticker.appendChild(taskTitle);
@@ -81,6 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
       tasks.push(data);
       renderTask(data);
       localStorage.setItem("tasks", JSON.stringify(tasks));
+
+      talkCount.innerText = ` ${tasks.length} task`;
 
       // Reset form and close it
       addTaskTitle.value = "";
