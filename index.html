@@ -18,16 +18,22 @@
       <hr>
         <div id="outer-div" class="d-flex justify-content-evenly  w-100">
             <div id="inner-div" class=" d-flex align-items-center ">
-                <button
-                class="btn"
-                type="button"
-                id="add-btn"
-                data-bs-toggle="modal"
-                data-bs-target="#add-task-modal"
-              >
-                Add Task +
-              </button>
-              <div id="task-count"></div>
+                <div id="task-count"></div>
+
+                <div class="cont-btns d-flex gap-2 mt-3">
+                    <button
+                    class="btn"
+                    type="button"
+                    id="add-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#add-task-modal"
+                  >
+                    Add Task +
+                  </button>
+                  <button id="delete-all" class="btn btn-danger">Delete All</button>
+
+                </div>
+          
 
             </div>
             

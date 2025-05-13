@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let tasksGrid = document.getElementById("tasks-grid");
   let addTaskForm = document.getElementById("add-task-form");
-  let addTaskBtn = document.getElementById("add-task-btn");
+  let deleteAllBtn = document.getElementById("delete-all");
   let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   let talkCount = document.getElementById("task-count");
 
@@ -10,7 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
     tasksGrid.innerText = "";
     tasks.map((task) => renderTask(task));
     talkCount.innerText = ` ${tasks.length} task`;
-
+    if (tasks.length > 0)  {
+        deleteAllBtn.style.display = "block";
+    } else {
+        deleteAllBtn.style.display = "none";
+    }
   };
 
   const renderTask = (task) => {
@@ -52,10 +56,25 @@ document.addEventListener("DOMContentLoaded", () => {
     sticker.style.backgroundColor = colors[randomColor];
 
     deleteBtn.innerText = "Remove 🗑️";
+    // Handle delete
     deleteBtn.onclick = () => {
-        let confirmDel = window.confirm("Are you sure you want to delete this task?");      
-            if (confirmDel) deleteTask(task.id);
-    } 
+      let confirmDel = window.confirm(
+        "Are you sure you want to delete this task?"
+      );
+      if (confirmDel) deleteTask(task.id);
+    };
+
+    // Handle delete all
+    deleteAllBtn.onclick = () => {
+      let confirmDel = window.confirm(
+        "Are you sure you want to delete all tasks?"
+      );
+      if (confirmDel) {
+        tasks.map((task) => deleteTask(task.id));
+        tasks = [];
+      }
+    };
+
 
     taskTitle.innerText = task.title;
     sticker.appendChild(taskTitle);
@@ -96,6 +115,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("add-task-modal")
       ).hide();
 
+      if (tasks.length > 0)  {
+        deleteAllBtn.style.display = "block";
+    }
     } catch (err) {
       console.log(err);
     }

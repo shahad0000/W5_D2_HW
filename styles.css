@@ -44,19 +44,25 @@
 }
 
 .delete-btn {
-  width: 50%;
+
   background-color: transparent;
   border: none;
   color: crimson;
 }
 
-#add-btn {
+#add-btn, #delete-all {
   font-size: 2rem;
   background-color: transparent;
   border: none;
   color: azure;
-  background-color:  rgb(10, 114, 158);
 }
+#add-btn {
+    background-color:  rgb(10, 114, 158);
+}
+#delete-all {
+    background-color: rgb(150, 5, 58);
+}
+
 #task-count {
   font-size: 2.4rem;
   font-weight: 700;
@@ -82,8 +88,8 @@
   #task-count {
     font-size: 2rem;
   }
-  #add-btn {
-    font-size: 2rem;
+  #add-btn, #delete-all {
+    font-size: 1.4rem;
   }
   .task-title {
     font-size: 2em;
@@ -108,8 +114,8 @@
   #task-count {
     font-size: 2rem;
   }
-  #add-btn {
-    font-size: 2rem;
+  #add-btn, #delete-all {
+    font-size: 1.6rem;
   }
   .task-title {
     font-size: 2em;
@@ -135,9 +141,10 @@
   #task-count {
     font-size: 2rem;
   }
-  #add-btn {
-    font-size: 2rem;
+  #add-btn, #delete-all {
+    font-size: 1.8rem;
   }
+  
   .task-title {
     font-size: 2em;
     font-weight: 300;
@@ -172,13 +179,15 @@
     font-size: 2em;
     font-weight: 300;
   }
+  .cont-btns {
+    flex-direction: column;
+  }
 }
 
 input[type="checkbox"] {
     accent-color: rgb(5, 150, 111);
      transform: scale(4);
 }
-
 
 .sticker-bottom {
     display: flex;
